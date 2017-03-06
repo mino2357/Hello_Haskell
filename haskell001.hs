@@ -1,2 +1,4 @@
+--はじめてのHaskell
+
 main = do
-    putStrLn "Hello Haskell"
+    putStrLn "Hello Haskell!."
