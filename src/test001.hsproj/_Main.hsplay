@@ -1,0 +1,6 @@
+-- Haskell Playground 1.0
+take 10 pita
+print $ factorial 100
+print $ fibo 10
+print $ diGamma 10
+print $ map thd $ take 100 pita
