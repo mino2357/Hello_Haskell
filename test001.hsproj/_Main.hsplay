@@ -1,0 +1,10 @@
+-- Haskell Playground 1.0
+--print $ take 10 pita
+--print $ factorial 100
+--print $ fibo 10
+--print $ diGamma 10
+--print $ map thd $ take 32 pita
+--head myList
+--head' myList
+map thd $ take 10 pita
+mapM_ print $ g (map thd $ take 10 pita)
