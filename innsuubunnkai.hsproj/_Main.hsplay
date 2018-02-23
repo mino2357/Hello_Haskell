@@ -1,10 +1,10 @@
 -- Haskell Playground 1.0
 [1..ceiling (sqrt 26)::Integer]
 
-factorize 12288
+factorize 100
 --isPrime 156789
-print $ (factorList.factorize) 12345917
+print $ (factorList.factorize) $ factorial 100
 
-print $ e_list 1000
+print $ e_list 100
 
 --mapM_ print $ euler (\x -> -x) 0 1 [1]

@@ -6,6 +6,13 @@ a :: [Integer]
 a = [2..ceiling (sqrt 25)::Integer]
 
 
+factorial :: Integer -> Integer
+factorial n 
+  | n == 1 = 1
+  | n > 1  = n * factorial (n - 1)
+  | otherwise = -1
+
+
 isPrime :: Integer -> Bool
 isPrime n
   | n == 1 = False
@@ -45,7 +52,7 @@ euler f t tmax x
     x0 = last x
     x1 = x0 + dt*f x0
 
- 
+
 e_list :: Integer -> [Integer]
 e_list n = e_sieve [2..n]
 

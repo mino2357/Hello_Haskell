@@ -1,0 +1,10 @@
+-- Haskell Playground 1.0
+myList
+print $ takeHead myList
+print $ takeTail myList
+print $ takeInit myList
+print $ takeLast myList
+print $ listLength myList
+print $ takeN 4 myList
+print $ dropN 2 myList
+print $ qSort [5,3,0,9,3,6,9,15,37,84,95,52,46,59,8,7,6,5,4,3,2,1]
