@@ -45,5 +45,11 @@ qSort (x:xs) = (qSort [ y | y<-xs, y<x])
                 ++ (qSort [ y | y<-xs, y>=x])
 
 
+takeReverse :: [Integer] -> [Integer]
+takeReverse (x:xs)
+  | xs == [] = [x]
+  | otherwise = (takeReverse xs)++[x]
+
+
 --erath :: Double -> [Double]
 --erath n = [n]
