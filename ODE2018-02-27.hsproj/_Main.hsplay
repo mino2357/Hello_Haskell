@@ -1,0 +1,6 @@
+-- Haskell Playground 1.0
+mylist = odeEulerWorker func 1.0 $ dxList 0.01 1.0
+
+odeEuler func 1.0 0.1 1.0
+
+putStrLn $ cutBrackets $ odeEuler func 1.0 0.1 1.0
