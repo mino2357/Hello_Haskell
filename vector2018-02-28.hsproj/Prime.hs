@@ -1,4 +1,4 @@
-module Prime(primeList) where
+module Prime(primeList, cutBrackets) where
 
 
 eratos :: Integral a => [a] -> [a]
@@ -10,3 +10,9 @@ eratos (n:ns)
 
 primeList :: Integral a => a -> [a]
 primeList n = eratos [2..n]
+
+
+cutBrackets :: Show a => [a] -> String
+cutBrackets (x:xs)
+  | null xs   = show x
+  | otherwise = show x ++ " | " ++ cutBrackets xs

@@ -1,2 +1,6 @@
 -- Haskell Playground 1.0
-print $ length $ primeList 1000000
+import PrimeList as PL
+
+area $ Rect 2 3
+
+print $ primeList' 3

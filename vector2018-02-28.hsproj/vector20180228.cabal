@@ -14,3 +14,4 @@ Executable vector20180228
   default-language: Haskell2010
   other-modules:
       Prime
+      PrimeList
