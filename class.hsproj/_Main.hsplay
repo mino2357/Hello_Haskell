@@ -1,0 +1,14 @@
+-- Haskell Playground 1.0
+area $ Rect 2 3
+
+print $ primeList' 3
+
+:t True
+:t P2
+
+:i True
+:i P3
+
+:t Just 2
+
+:i P7

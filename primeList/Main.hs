@@ -59,7 +59,7 @@ cut (x:xs) = show x ++ " " ++ (show ( last xs))
 
 
 main = do
-  mapM_ putStrLn $ fmap cut (fmap rad' [2..10000])
+  mapM_ putStrLn $ fmap cut (fmap rad [2..10000])
 
 
 

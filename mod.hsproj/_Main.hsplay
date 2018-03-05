@@ -1,0 +1,14 @@
+-- Haskell Playground 1.0
+p = 131
+
+a = Zn 23 p
+b = Zn 57 p
+
+printZn a
+printZn b
+printZn $ a `plus` b
+printZn $ a `minus` b
+printZn $ a `multiply` b
+printZn $ a `devide` b
+
+print $ inverse b

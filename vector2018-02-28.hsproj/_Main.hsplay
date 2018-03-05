@@ -1,6 +1,5 @@
 -- Haskell Playground 1.0
-import PrimeList as PL
 
-area $ Rect 2 3
+:i Num
 
-print $ primeList' 3
+:i Vector [2, 3]
