@@ -3,4 +3,6 @@ p = 131
 
 a = Zn 43 p
 
-toNumber $ fromMaybe $ inverse a
+print $ a
+
+printZn $ (fromJust $ inverse a)

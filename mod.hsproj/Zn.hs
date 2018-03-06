@@ -2,58 +2,35 @@ module Zn where
 
 import Data.List
 import IsPrime
+import Data.Maybe
 
-data Zn = Zn Integer Integer
+data Zn = Zn {toNumber::Integer, toMod::Integer}
   deriving (Show, Read)
 
-fromMaybe :: Maybe Zn -> Zn
-fromMaybe (Just x) = x
-fromMaybe Nothing  = error "muripo"
-
-toNumber :: Zn -> Integer
-toNumber x = read (takeFirst $ cutZn $ show x)::Integer
-
 printZn :: Zn -> IO ()
-printZn x = putStrLn $ (show $ toNumber x) ++ " mod " ++ (show $ takeMod x)
-
-cutZn :: [Char] -> [Char]
-cutZn x = drop 3 x
-
-takeMod :: Zn -> Integer
-takeMod x = read (cutZn $ (\\) (show x) $ takeFirst $ cutZn (show x))::Integer
-
-takeFirst :: [Char] -> [Char]
-takeFirst (x:xs)
-  | [x] == " "  = []
-  | otherwise = x:takeFirst xs
+printZn x = putStrLn $ (show $ toNumber x) ++ " mod " ++ (show $ toMod x)
 
 plus :: Zn -> Zn -> Zn
-plus x y = Zn (((toNumber x) + (toNumber y)) `mod` (takeMod x)) (takeMod x)
+plus x y = Zn (((toNumber x) + (toNumber y)) `mod` (toMod x)) (toMod x)
 
 minus :: Zn -> Zn -> Zn
-minus x y = Zn (((toNumber x) - (toNumber y)) `mod` (takeMod x)) (takeMod x)
+minus x y = Zn (((toNumber x) - (toNumber y)) `mod` (toMod x)) (toMod x)
 
 multiply :: Zn -> Zn -> Zn
-multiply x y = Zn (((toNumber x) * (toNumber y)) `mod` (takeMod x)) (takeMod x)
+multiply x y = Zn (((toNumber x) * (toNumber y)) `mod` (toMod x)) (toMod x)
 
 devide :: Zn -> Zn -> Zn
 devide x y
-  | isPrime (takeMod y) == False = error "muripo"
-  | otherwise = Zn (((toNumber x) * (toNumber $ fromMaybe $ inverse y)) `mod` (takeMod x)) (takeMod x)
-
-gcd' :: (Integer, Integer) -> Integer
-gcd' (x,y)
-  | x>y = gcd' (y,x)
-  | x == 0   = y
-  | otherwise = gcd' (x, y - x * (y `div` x))
+  | not (isPrime (toMod y)) = error "muripo"
+  | otherwise = Zn (((toNumber x) * (toNumber $ fromJust $ inverse y)) `mod` (toMod x)) (toMod x)
 
 inverse :: Zn -> Maybe Zn
 inverse x
   | toNumber x == 0 = Nothing
-  | (isPrime $ takeMod x) == False = Nothing
-  | otherwise = Just (Zn (invWorker (toNumber x, takeMod x)) (takeMod x))
+  | not (isPrime $ toMod x) = Nothing
+  | otherwise = Just (Zn (invWorker (toNumber x, toMod x)) (toMod x))
   where
     invWorker :: (Integer, Integer) -> Integer
-    invWorker (x,p) = fst $ head [ i | i<- zip [1..p-1] $ fmap (`mod` p) $ fmap (x*) [1..p-1], snd i == 1]
+    invWorker (x,p) = head [ i | i<-[1..p-1], (x * i) `mod` p == 1]
 
 
