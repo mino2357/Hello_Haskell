@@ -26,7 +26,11 @@ toZnP n p = toZn n p
 
 --p = 691 -- Prime Number
 
---main = do
+pList = [ p | p<-[3..], isPrime p]
+
+func2 = isPrimitiveRoot 2
+
+main = do
 --  printZn a
 --  printZn b
 
@@ -37,3 +41,5 @@ toZnP n p = toZn n p
 
 -- print $ take 10 $ fmap toNumber $ fmap fromJust $ fmap inverse list
 --  mapM_ print $ [ i | i<-[1..p-1], isPrimitiveRoot i p]
+
+mapM_ print $ [ i | i<-pList, func2 i]
