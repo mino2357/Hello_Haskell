@@ -7,6 +7,9 @@ import Data.Maybe
 data Zn = Zn {toNumber::Integer, toMod::Integer}
   deriving (Show, Read)
 
+toZn :: Integer -> Integer -> Zn
+toZn n p = Zn n p
+
 printZn :: Zn -> IO ()
 printZn x = putStrLn $ (show $ toNumber x) ++ " mod " ++ (show $ toMod x)
 
@@ -33,4 +36,7 @@ inverse x
     invWorker :: (Integer, Integer) -> Integer
     invWorker (x,p) = head [ i | i<-[1..p-1], (x * i) `mod` p == 1]
 
-
+pow :: Zn -> Integer -> Zn
+pow x n
+  | n == 1 = x
+  | otherwise = x `multiply` (pow x (n-1))

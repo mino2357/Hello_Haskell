@@ -1,14 +1,17 @@
 -- Haskell Playground 1.0
-p = 131
+--a = Zn 23 p
+--b = Zn 57 p
 
-a = Zn 23 p
-b = Zn 57 p
+--printZn a
+--printZn b
+--printZn $ a `plus` b
+--printZn $ a `minus` b
+--printZn $ a `multiply` b
+--printZn $ a `devide` b
 
-printZn a
-printZn b
-printZn $ a `plus` b
-printZn $ a `minus` b
-printZn $ a `multiply` b
-printZn $ a `devide` b
+--mapM_ print $ fmap toNumber $ fmap fromJust $ fmap inverse list
+pList = [ p | p<-[3..], isPrime p]
 
-print $ inverse b
+func2 = isPrimitiveRoot 2
+
+print $ [ i | i<-pList, func2 i]

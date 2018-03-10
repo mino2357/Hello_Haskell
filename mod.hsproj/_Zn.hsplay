@@ -1,8 +1,12 @@
 -- Haskell Playground 1.0
-p = 131
+p = 8191
 
-a = Zn 43 p
+a = Zn 2 p
+b = Zn 3 p
 
-print $ a
+printZn $ a
+printZn $ b
 
-printZn $ (fromJust $ inverse a)
+
+printZn $ pow (a `plus` b) p
+printZn $ pow a p `plus` pow b p
