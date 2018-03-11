@@ -3,7 +3,10 @@ import IsPrime
 import Data.Maybe
 import Zn
 
+pMax = 1000
 
+pListFrom :: Integer -> [Integer]
+pListFrom n = [ p | p<-[n..pMax], isPrime p]
 
 isPrimitiveRoot :: Integer -> Integer -> Bool
 isPrimitiveRoot n p
@@ -24,22 +27,15 @@ calcOrder (x:xs) = genericLength $ calcOrderWoker x (x:xs)
 toZnP :: Integer -> Integer -> Zn
 toZnP n p = toZn n p
 
---p = 691 -- Prime Number
 
-pList = [ p | p<-[3..], isPrime p]
+makeList :: Integer -> [Integer]
+makeList p = [ i | i<-pList, isPrimitiveRoot p i]
+  where
+    pList = [ i | i<-[(p+1)..pMax], isPrime i]
 
-func2 = isPrimitiveRoot 2
+printList :: Integer -> [Char]
+printList n
+  | n <  1000  = (show n) ++ " | " ++ (show $ makeList n) ++ "\n" ++ printList (n+1)
+  | otherwise = (show n) ++ " | " ++ (show $ makeList n)
 
-main = do
---  printZn a
---  printZn b
-
---  printZn $ a `plus` b
---  printZn $ a `minus` b
---  printZn $ a `multiply` b
---  printZn $ a `devide` b
-
--- print $ take 10 $ fmap toNumber $ fmap fromJust $ fmap inverse list
---  mapM_ print $ [ i | i<-[1..p-1], isPrimitiveRoot i p]
-
-mapM_ print $ [ i | i<-pList, func2 i]
+main = putStrLn $ printList 2

@@ -10,8 +10,9 @@
 --printZn $ a `devide` b
 
 --mapM_ print $ fmap toNumber $ fmap fromJust $ fmap inverse list
-pList = [ p | p<-[3..11], isPrime p]
 
-func2 = isPrimitiveRoot 2
+n = 2
 
-print $ [ i | i<-pList, func2 i]
+nList = [2..100]
+
+putStrLn $ printList 2
