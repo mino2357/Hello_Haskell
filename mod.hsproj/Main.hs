@@ -5,8 +5,8 @@ import Zn
 
 pMax = 1000
 
-pListFrom :: Integer -> [Integer]
-pListFrom n = [ p | p<-[n..pMax], isPrime p]
+--pListFrom :: Integer -> [Integer]
+--pListFrom n = [ p | p<-[n..pMax], isPrime p]
 
 isPrimitiveRoot :: Integer -> Integer -> Bool
 isPrimitiveRoot n p
@@ -31,11 +31,11 @@ toZnP n p = toZn n p
 makeList :: Integer -> [Integer]
 makeList p = [ i | i<-pList, isPrimitiveRoot p i]
   where
-    pList = [ i | i<-[(p+1)..pMax], isPrime i]
+    pList = [ i | i<-[(p+1)..100*p], isPrime i]
 
 printList :: Integer -> [Char]
 printList n
-  | n <  1000  = (show n) ++ " | " ++ (show $ makeList n) ++ "\n" ++ printList (n+1)
+  | n < 10000  = (show n) ++ " | " ++ (show $ makeList n) ++ "\n" ++ printList (n+1)
   | otherwise = (show n) ++ " | " ++ (show $ makeList n)
 
 main = putStrLn $ printList 2
