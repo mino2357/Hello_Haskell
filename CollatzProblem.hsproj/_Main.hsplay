@@ -1,6 +1,7 @@
 -- Haskell Playground 1.0
-mapM_ print $ collatz 279731455
 
 n = 100
+
+print $ collatz 27
 
 --putStrLn $ cutBrachets $ zip [1..n] $ fmap collatzLength [1..n]

@@ -1,0 +1,19 @@
+-- Haskell Playground 1.0
+digitList 123
+
+toIntList $ show 122344
+
+show 13
+
+nub [1,2,3,4,5,1,4,5]
+
+digitToInt '1'
+
+digitSumSeq' [1534]
+
+--print $ fmap length $ fmap calcDigitRoot [1..10]
+
+m = 130
+n = 155
+
+print $ zip [m..n] $ fmap length $ fmap calcDigitRoot [m..n]

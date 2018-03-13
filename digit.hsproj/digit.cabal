@@ -1,12 +1,12 @@
-name: CollatzProblem
+name: digit
 version: 1.0
 cabal-version: 1.22
 build-type: Simple
-license: MIT
+license: AllRightsReserved
 stability: experimental
 x-ghc-framework-version: 8.0.2-8.9-3
 x-last-ide-version: HfM1.5.1
-Executable CollatzProblem
+Executable digit
   main-is: Main.hs
   buildable: True
   build-depends:
