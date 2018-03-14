@@ -1,3 +1,10 @@
 -- Haskell Playground 1.0
-drop 2 $ show 3.14
-:t toInteger
+--mapM_ print $ doubleToDigit 3.141543143
+
+
+--mapM_ print $ fmap doubleToDigit leibnizSeq
+
+fmap doubleToDigit leibnizSeq
+
+
+--mapM_ putStrLn $ fmap listToSeq $ fmap doubleToDigit leibnizSeq
