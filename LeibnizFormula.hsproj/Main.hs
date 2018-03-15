@@ -20,7 +20,7 @@ invOddList = fmap (4.0/) oddList
 
 pm = [ 1.0*(-1)^i | i<-[2..]]
 
-n = 100000
+n = 1000
 
 leibnizSeq = drop 1 $ scanl' (\x y -> x + y) 0.0 $ take n $ mulList pm invOddList
 
@@ -29,4 +29,4 @@ listToSeq (n:ns)
   | null ns = "\n"
   | otherwise = show n ++ "\n" ++ listToSeq ns
 
-main = mapM_ putStrLn $ fmap listToSeq $ fmap doubleToDigit $ drop 99900 leibnizSeq
+--main = mapM_ putStrLn $ fmap listToSeq $ fmap doubleToDigit $ drop 99999900 leibnizSeq
