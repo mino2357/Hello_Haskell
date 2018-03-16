@@ -1,2 +1,9 @@
 -- Haskell Playground 1.0
 Cons 3 $ Cons 2 $ Cons 1 Empty
+
+2 :-: Empty1
+
+a = 1 :-: 2 :-: Empty1
+b = 4 :-: 3 :-: 2 :-: Empty1
+
+a ^++ b

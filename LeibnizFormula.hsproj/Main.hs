@@ -1,32 +1,21 @@
 import Data.List
 import Data.Char
+import Data.Fixed
 
-doubleToDigit :: Double -> [Int]
-doubleToDigit x = toIntList $ drop 2 $ show x
-  where
-    toIntList :: [Char] -> [Int]
-    toIntList (n:ns)
-      | null ns = (digitToInt n):[]
-      | otherwise = (digitToInt n):toIntList ns
+data E100 = E100
+  deriving (Show)
+instance HasResolution E100 where
+  resolution _ = 10^100
+type Float100 = Fixed E100
 
-mulList :: Num a => [a] -> [a] -> [a]
-mulList (x:xs) (y:ys)
-  | null xs = x*y:[]
-  | null ys = x*y:[]
-  | otherwise = (x*y):mulList xs ys
+float100ToDigit :: Float100 -> [Int]
+float100ToDigit x = map digitToInt $ filter isDigit $ show x
 
-oddList = [1,3..]
-invOddList = fmap (4.0/) oddList
 
-pm = [ 1.0*(-1)^i | i<-[2..]]
-
-n = 1000
-
-leibnizSeq = drop 1 $ scanl' (\x y -> x + y) 0.0 $ take n $ mulList pm invOddList
+leibnizSeq' :: Integer -> [Float100]
+leibnizSeq' n = genericTake n $ init $ scanl1 (+) $ fmap ((4.0::Float100)/) $ zipWith (*) [1::Float100,3::Float100 ..] $ cycle [1::Float100,-1::Float100]
 
 listToSeq :: [Int] -> String
-listToSeq (n:ns)
-  | null ns = "\n"
-  | otherwise = show n ++ "\n" ++ listToSeq ns
+listToSeq n = unlines ( map show n ) ++ "\n"
 
---main = mapM_ putStrLn $ fmap listToSeq $ fmap doubleToDigit $ drop 99999900 leibnizSeq
+main = mapM_ putStrLn $ fmap listToSeq $ fmap float100ToDigit $ take 100 $ reverse $ leibnizSeq' 1000000

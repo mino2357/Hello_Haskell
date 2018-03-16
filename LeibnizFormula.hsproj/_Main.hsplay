@@ -1,4 +1,11 @@
 -- Haskell Playground 1.0
---mapM_ print $ doubleToDigit 3.141543143
---mapM_ print $ fmap doubleToDigit leibnizSeq
---mapM_ putStrLn $ fmap listToSeq $ fmap doubleToDigit leibnizSeq
+
+
+a = 0.1::Float100
+b = 0.3::Float100
+
+[a,b..]
+
+print $ a+b
+
+reverse $ leibnizSeq' 2
